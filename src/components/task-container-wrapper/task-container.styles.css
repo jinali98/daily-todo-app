@@ -1,0 +1,6 @@
+.main-task-container {
+  width: 80%;
+  height: 95vh;
+  overflow-y: scroll;
+  padding: 3rem;
+}
