@@ -1,7 +1,6 @@
-import { Button } from "@material-ui/core";
-import React from "react";
+import CustomButton from "../custom-button/custom-button.component";
 
-const CustomButton = ({
+export const generalButton = ({
   children,
   type,
   variant,
@@ -12,18 +11,14 @@ const CustomButton = ({
   ...otherProps
 }) => {
   return (
-    <Button
-      variant={variant}
-      color={color}
+    <CustomButton
+      variant="outlined"
+      color="primary"
       endIcon={endIcon}
       type={type}
       {...otherProps}
       size={size}
       onClick={onClick}
-    >
-      {children}
-    </Button>
+    ></CustomButton>
   );
 };
-
-export default CustomButton;

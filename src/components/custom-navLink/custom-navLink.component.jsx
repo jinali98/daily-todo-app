@@ -1,11 +1,14 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { lengthCalculate } from "../../utils/lengthCalculate";
-
-const CustomNavLink = ({ taskType, linkUrl, navCategory }) => {
+import "./custom-navLink.styles.css";
+const CustomNavLink = ({ taskType, linkUrl, navCategory, color }) => {
   return (
     <NavLink activeClassName="active" className="navlink-item" to={linkUrl}>
-      {`${navCategory} ${lengthCalculate(taskType)}`}
+      <p>{navCategory}</p>
+      <p className="taskcount-color" style={{ backgroundColor: color }}>
+        {lengthCalculate(taskType)}
+      </p>
     </NavLink>
   );
 };

@@ -4,11 +4,12 @@ import { selectAllTasks } from "../../redux/tasks/tasks.selectors";
 import { selectCurrentUserDisplayName } from "../../redux/user/user.selector";
 import LandingContentNoTasks from "../landing-content-noTasks/landing-content-noTasks";
 import LandingContent from "../landing-content/landing-content";
-
+import TaskHeading from "../task-heading/task-heading.component";
+import "./landing.styles.css";
 const Landing = ({ allTasks, displayName }) => {
   return (
-    <div style={{ margin: "45px" }}>
-      <h1>{`Hey, ${displayName}`} </h1>
+    <div className="landing-wrapper" style={{ margin: "45px" }}>
+      <TaskHeading>{`Hey, ${displayName}`} </TaskHeading>
       {allTasks.length > 0 ? <LandingContent /> : <LandingContentNoTasks />}
     </div>
   );

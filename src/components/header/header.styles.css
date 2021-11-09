@@ -5,17 +5,16 @@
   height: 100vh;
   justify-content: space-around;
   align-items: center;
-  background-color: rgba(113, 191, 255, 0.678);
-
-  border-right: 5px solid rgba(128, 128, 128, 0.5);
+  background-color: #f1f3f5;
 }
+
 .logo {
   font-family: cursive;
   font-size: 30px;
   margin: 0;
 }
 .navlink-item {
-  width: 90%;
+  width: 100%;
   height: 50px;
   padding: 10px 15px;
   text-align: left;
@@ -26,14 +25,12 @@
 }
 
 .active {
-  background-color: rgba(90, 69, 211, 0.7);
-  border-radius: 20px;
-  color: aliceblue;
+  background-color: #e9ecef;
+  color: #495057;
 }
 
 .navlink-item:hover {
-  background-color: rgba(55, 36, 165, 0.1);
-  border-radius: 20px;
+  background-color: #e9ecef;
 }
 .sub-header-container {
   display: flex;

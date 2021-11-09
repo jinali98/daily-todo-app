@@ -1,0 +1,14 @@
+.sign-in-page {
+  width: 30vw;
+  height: 58vh;
+  text-align: center;
+  margin: 3rem auto;
+  background-color: #862e9c;
+  border-radius: 12px;
+}
+
+.sign-in-page_image-container {
+  width: 300px;
+  margin: auto;
+  margin-bottom: 1rem;
+}

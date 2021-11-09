@@ -1,0 +1,13 @@
+.landing-content-empty-wrapper {
+  width: 50%;
+  margin: auto;
+  text-align: center;
+  background-color: #12b886;
+  border-radius: 12px;
+  padding: 1rem 0;
+}
+
+.landing-content-empty-wrapper_image {
+  width: 400px;
+  margin: auto;
+}

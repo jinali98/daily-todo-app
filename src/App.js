@@ -17,6 +17,7 @@ import { createStructuredSelector } from "reselect";
 import { selectCurrentUser } from "./redux/user/user.selector";
 import "./App.css";
 import ThisMonthPage from "./pages/thisMonthPage/this-month-page.component";
+import HomePage from "./pages/homePage/home-page.component";
 
 class App extends Component {
   unsubscribeFromAuth = null;
@@ -52,7 +53,7 @@ class App extends Component {
             exact
             path="/"
             render={() =>
-              !this.props.currentUser ? <Redirect to="/signin" /> : <Landing />
+              !this.props.currentUser ? <Redirect to="/signin" /> : <HomePage />
             }
           />
           <Route
