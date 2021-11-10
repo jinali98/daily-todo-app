@@ -2,9 +2,10 @@
   width: 30vw;
   height: 58vh;
   text-align: center;
-  margin: 3rem auto;
-  background-color: #862e9c;
+  margin: 100px auto;
+  background-color: #eebefa;
   border-radius: 12px;
+  padding-top: 3rem;
 }
 
 .sign-in-page_image-container {

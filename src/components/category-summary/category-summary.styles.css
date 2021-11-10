@@ -1,6 +1,5 @@
-.tasks-container {
-  margin: 1rem auto;
+.category-summary-container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  row-gap: 20px;
+  grid-row-gap: 20px;
 }

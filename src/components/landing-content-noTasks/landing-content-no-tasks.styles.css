@@ -1,8 +1,8 @@
 .landing-content-empty-wrapper {
   width: 50%;
-  margin: auto;
+  margin: 2rem auto;
   text-align: center;
-  background-color: #12b886;
+  background-color: #ffd8a8;
   border-radius: 12px;
   padding: 1rem 0;
 }

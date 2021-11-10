@@ -8,7 +8,7 @@ import {
   selectNormaltasks,
 } from "../../redux/tasks/tasks.selectors";
 import { connect } from "react-redux";
-
+import "./importance-level-summary.styles.css";
 const ImportanceLevelSummary = ({
   normalTasks,
   lowTasks,
@@ -16,7 +16,7 @@ const ImportanceLevelSummary = ({
   criticalTasks,
 }) => {
   return (
-    <div>
+    <div className="importance-level-summary-container">
       <SummaryCard title="Critical Level Tasks" number={criticalTasks.length} />
       <SummaryCard
         title="Important Level Tasks"

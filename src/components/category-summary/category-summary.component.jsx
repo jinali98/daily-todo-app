@@ -10,7 +10,7 @@ import {
   selectTomorowTasks,
 } from "../../redux/tasks/tasks.selectors";
 import { connect } from "react-redux";
-
+import "./category-summary.styles.css";
 const CategorySummary = ({
   allTasks,
   completedtasks,
@@ -20,7 +20,7 @@ const CategorySummary = ({
   thisMonthTask,
 }) => {
   return (
-    <div>
+    <div className="category-summary-container">
       <SummaryCard title="All Tasks" number={allTasks.length} />
       <SummaryCard title="Completed Tasks" number={completedtasks.length} />
       <SummaryCard title="Pending Tasks" number={inprogressTasks.length} />

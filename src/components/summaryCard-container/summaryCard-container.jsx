@@ -1,9 +1,9 @@
 import CategorySummary from "../category-summary/category-summary.component";
 import ImportanceLevelSummary from "../importance-level-summary/importance-level-summary.component";
-
+import "./summaryCard-container.styles.css";
 const SummaryCardContainer = () => {
   return (
-    <div>
+    <div className="summary-card-container">
       <ImportanceLevelSummary />
       <CategorySummary />
     </div>
