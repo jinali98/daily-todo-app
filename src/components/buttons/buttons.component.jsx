@@ -1,6 +1,12 @@
-import CustomButton from "../custom-button/custom-button.component";
+import {
+  CustomButton,
+  CustomIconButton,
+} from "../custom-button/custom-button.component";
+import DeleteIcon from "@material-ui/icons/Delete";
+import PersonIcon from "@material-ui/icons/Person";
+import EditIcon from "@material-ui/icons/Edit";
 
-export const generalButton = ({
+export const GoogleButton = ({
   children,
   type,
   variant,
@@ -12,13 +18,65 @@ export const generalButton = ({
 }) => {
   return (
     <CustomButton
-      variant="outlined"
+      variant="contained"
       color="primary"
-      endIcon={endIcon}
-      type={type}
-      {...otherProps}
-      size={size}
+      endIcon={<PersonIcon />}
+      type="button"
+      size="large"
       onClick={onClick}
-    ></CustomButton>
+      {...otherProps}
+    >
+      {children}
+    </CustomButton>
+  );
+};
+export const AddTaskButton = ({
+  children,
+  type,
+  variant,
+  color,
+  endIcon,
+  size,
+  onClick,
+  ...otherProps
+}) => {
+  return (
+    <CustomButton
+      variant="contained"
+      color="primary"
+      endIcon={<EditIcon />}
+      type="button"
+      size="large"
+      onClick={onClick}
+      {...otherProps}
+    >
+      {children}
+    </CustomButton>
+  );
+};
+
+export const DeleteButton = ({ onClick }) => {
+  return (
+    <CustomIconButton
+      onClick={onClick}
+      aria-label="remove"
+      variant="contained"
+      color="primary"
+    >
+      <DeleteIcon />
+    </CustomIconButton>
+  );
+};
+export const UpdateStatusButton = ({ children, onClick }) => {
+  return (
+    <CustomButton
+      onClick={onClick}
+      aria-label="edit"
+      variant="contained"
+      color="primary"
+      size="small"
+    >
+      {children}
+    </CustomButton>
   );
 };
