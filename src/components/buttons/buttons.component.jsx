@@ -45,7 +45,7 @@ export const AddTaskButton = ({
       variant="contained"
       color="primary"
       endIcon={<EditIcon />}
-      type="button"
+      type={type}
       size="large"
       onClick={onClick}
       {...otherProps}

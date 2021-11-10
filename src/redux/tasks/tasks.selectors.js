@@ -57,19 +57,19 @@ export const selectThisMonthTasks = createSelector(
 
 //select by importance level -normal
 export const selectNormaltasks = createSelector([selectAllTasks], (tasks) =>
-  tasks.filter((task) => task.importance === "normal")
+  tasks.filter((task) => task.importance === "Normal")
 );
 //select by importance level -low
 export const selectLowTasks = createSelector([selectAllTasks], (tasks) =>
-  tasks.filter((task) => task.importance === "low")
+  tasks.filter((task) => task.importance === "Low")
 );
 //select by importance level -important
 export const selectImportantTasks = createSelector([selectAllTasks], (tasks) =>
-  tasks.filter((task) => task.importance === "important")
+  tasks.filter((task) => task.importance === "Important")
 );
 //select by importance level -critical
 export const selectCriticalTasks = createSelector([selectAllTasks], (tasks) =>
-  tasks.filter((task) => task.importance === "critical")
+  tasks.filter((task) => task.importance === "Critical")
 );
 
 // count completed tasks
