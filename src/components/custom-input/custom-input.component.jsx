@@ -1,9 +1,96 @@
+import { InputAdornment, MenuItem, TextField } from "@material-ui/core";
+import { taskPriorLevels } from "../../constants/taskPriorityLevels";
+import { convertToArray } from "../../utils/convertToAnArray";
+
 const CustomInput = ({ handleChange, label, ...otherProps }) => {
   return (
     <div className="group">
       <label className="">{label}</label>
       <input className="form-input" onChange={handleChange} {...otherProps} />
     </div>
+  );
+};
+
+export const DateField = ({ error, onChange, value }) => {
+  return (
+    <TextField
+      type="date"
+      id="date"
+      color="primary"
+      variant="filled"
+      onChange={onChange}
+      error={error}
+      value={value}
+    />
+  );
+};
+export const TitleField = ({ error, onChange, value }) => {
+  return (
+    <TextField
+      label="Task Title"
+      type="text"
+      id="task-title"
+      color="primary"
+      variant="filled"
+      onChange={onChange}
+      error={error}
+      value={value}
+    />
+  );
+};
+export const DescriptionField = ({ error, onChange, value }) => {
+  return (
+    <TextField
+      label="Description"
+      type="text"
+      id="description"
+      color="primary"
+      variant="filled"
+      onChange={onChange}
+      error={error}
+      value={value}
+    />
+  );
+};
+export const DurationField = ({ error, onChange, value }) => {
+  return (
+    <TextField
+      label="Duration"
+      type="number"
+      id="duration"
+      color="primary"
+      variant="filled"
+      onChange={onChange}
+      error={error}
+      value={value}
+      InputProps={
+        ({ inputProps: { min: 1 } },
+        {
+          endAdornment: <InputAdornment position="end">Hr</InputAdornment>,
+        })
+      }
+    />
+  );
+};
+
+export const TaskPriorTypesField = ({ error, onChange, value }) => {
+  return (
+    <TextField
+      id="task-type"
+      select
+      label="Priority Level"
+      value={value}
+      onChange={onChange}
+      variant="filled"
+      error={error}
+      color="primary"
+    >
+      {convertToArray(taskPriorLevels).map((option) => (
+        <MenuItem key={option.type} value={option.type}>
+          {option.type}
+        </MenuItem>
+      ))}
+    </TextField>
   );
 };
 

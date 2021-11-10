@@ -1,92 +1,66 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import { connect } from "react-redux";
 import { addNewTask } from "../../redux/tasks/tasks.actions";
-import CustomInput from "../custom-input/custom-input.component";
+import { AddTaskButton } from "../buttons/buttons.component";
+import CustomInput, {
+  DateField,
+  DescriptionField,
+  DurationField,
+  TaskPriorTypesField,
+  TitleField,
+} from "../custom-input/custom-input.component";
+import "./task-form.styles.css";
 
-class TaskForm extends Component {
-  constructor() {
-    super();
+const TaskForm = ({ addTodo }) => {
+  const [userInputs, setUserInput] = useState({
+    title: "",
+    description: "",
+    date: "",
+    importance: "",
+    duration: "1",
+  });
 
-    this.state = {
-      title: "",
-      description: "",
-      date: "",
-      importance: "",
-      duration: "",
-    };
-  }
-  inputChangeHandler = (e) => {
-    const { name, value } = e.target;
-    this.setState({ [name]: value });
+  const inputChangeHandler = (props) => (e) => {
+    setUserInput((prev) => ({ ...prev, [props]: e.target.value }));
   };
 
-  formSubmitHandler = (e) => {
-    const iddate = new Date();
-    const { addTodo } = this.props;
+  const formSubmitHandler = (e) => {
     e.preventDefault();
-    const { title, description, date, importance, duration } = this.state;
-    console.log(this.state);
+
     addTodo({
       id: Math.trunc(Math.random() * 500),
-      ...this.state,
+      ...userInputs,
       status: "inprogress",
     });
   };
 
-  render() {
-    return (
-      <form onSubmit={this.formSubmitHandler}>
-        <CustomInput
-          label="Title"
-          name="title"
-          type="text"
-          placeholder="Title"
-          value={this.state.title}
-          required
-          onChange={this.inputChangeHandler}
-        />
-        <CustomInput
-          label="description"
-          name="description"
-          type="text"
-          placeholder="description"
-          value={this.state.description}
-          required
-          onChange={this.inputChangeHandler}
-        />
-        <CustomInput
-          label="Date"
-          name="date"
-          type="date"
-          placeholder="select date"
-          value={this.state.date}
-          required
-          onChange={this.inputChangeHandler}
-        />
-        <CustomInput
-          label="Importance"
-          name="importance"
-          type="text"
-          placeholder="importance"
-          value={this.state.importance}
-          required
-          onChange={this.inputChangeHandler}
-        />
-        <CustomInput
-          label="duration"
-          name="duration"
-          type="text"
-          placeholder="3 hours"
-          value={this.state.duration}
-          required
-          onChange={this.inputChangeHandler}
-        />
+  return (
+    <form className="add-task-form" onSubmit={formSubmitHandler}>
+      <TitleField
+        value={userInputs.title}
+        onChange={inputChangeHandler("title")}
+      />
+      <DescriptionField
+        value={userInputs.description}
+        onChange={inputChangeHandler("description")}
+      />
+      <TaskPriorTypesField
+        value={userInputs.importance}
+        onChange={inputChangeHandler("importance")}
+      />
+      <DateField
+        value={userInputs.date}
+        onChange={inputChangeHandler("date")}
+      />
+      <DurationField
+        value={userInputs.duration}
+        onChange={inputChangeHandler("duration")}
+      />
 
-        <button type="submit">submit</button>
-      </form>
-    );
-  }
-}
+      <AddTaskButton type="submit">Add Task</AddTaskButton>
+    </form>
+  );
+};
 
 const mapDispatchToProps = (dispatch) => ({
   addTodo: (item) => dispatch(addNewTask(item)),
