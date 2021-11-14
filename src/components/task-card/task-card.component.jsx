@@ -5,6 +5,8 @@ import { markAsCompleted, removeTask } from "../../redux/tasks/tasks.actions";
 import CustomCard from "../custom-card/custom-card.component";
 import { makeStyles } from "@material-ui/core/styles";
 import { DeleteButton, UpdateStatusButton } from "../buttons/buttons.component";
+import { taskPriorLevels } from "../../constants/taskPriorityLevels";
+import { taskTypes } from "../../constants/taskTypes";
 
 export const useStyles = makeStyles({
   chipsGroup: {
@@ -38,8 +40,17 @@ const TaskCard = ({ task, updateStatus, removeTask }) => {
     <CustomCard>
       <CardContent>
         <div className={classess.chipsGroup}>
-          <Chip label={importance} color="secondary" />
-          <Chip label={status} color="primary" variant="outlined" />
+          <Chip
+            label={importance}
+            style={{ backgroundColor: `${taskPriorLevels[importance].color}` }}
+            color="primary"
+          />
+          <Chip
+            label={status}
+            color="primary"
+            style={{ backgroundColor: `${taskTypes[status].color}` }}
+            // variant="outlined"
+          />
         </div>
         <Typography variant="h5" component="h2" color="textPrimary">
           {title}

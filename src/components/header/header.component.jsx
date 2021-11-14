@@ -28,72 +28,78 @@ const Header = ({
   thisMonthTasks,
 }) => {
   return (
-    <div className="header-container">
-      <Link to="/">
-        <p className="logo">DAILY</p>
-      </Link>
-      {currentUser ? (
-        <div className="sub-header-container">
-          <CustomNavLink
-            taskType={allTasks}
-            linkUrl="/all-tasks"
-            navCategory="All Tasks"
-            color="#ff6b6b"
-          />
+    <>
+      <div className="header-container">
+        <Link to="/">
+          <p className="logo">DAILY</p>
+        </Link>
+        {currentUser ? (
+          <div className="sub-header-container">
+            <CustomNavLink
+              taskType={allTasks}
+              linkUrl="/all-tasks"
+              navCategory="All Tasks"
+              color="#ff6b6b"
+            />
 
-          <CustomNavLink
-            taskType={completedTasks}
-            navCategory="Completed Tasks"
-            linkUrl="/completed-tasks"
-            color="#cc5de8"
-          />
+            <CustomNavLink
+              taskType={completedTasks}
+              navCategory="Completed Tasks"
+              linkUrl="/completed-tasks"
+              color="#cc5de8"
+            />
 
-          <CustomNavLink
-            taskType={inprogressTasks}
-            navCategory="Inprogress Tasks"
-            linkUrl="/inprogress-tasks"
-            color="#94d82d"
-          />
-          <CustomNavLink
-            taskType={todayTasks}
-            navCategory="Today"
-            linkUrl="/today-task"
-            color="#f06595"
-          />
-          <CustomNavLink
-            taskType={tmrwTasks}
-            navCategory="Tomorrow"
-            linkUrl="/tomorow-task"
-            color="#22b8cf"
-          />
-          <CustomNavLink
-            taskType={thisMonthTasks}
-            navCategory="This Month"
-            linkUrl="/this-month-task"
-            color="#fcc419"
-          />
+            <CustomNavLink
+              taskType={inprogressTasks}
+              navCategory="Inprogress Tasks"
+              linkUrl="/inprogress-tasks"
+              color="#94d82d"
+            />
+            <CustomNavLink
+              taskType={todayTasks}
+              navCategory="Today"
+              linkUrl="/today-task"
+              color="#f06595"
+            />
+            <CustomNavLink
+              taskType={tmrwTasks}
+              navCategory="Tomorrow"
+              linkUrl="/tomorow-task"
+              color="#22b8cf"
+            />
+            <CustomNavLink
+              taskType={thisMonthTasks}
+              navCategory="This Month"
+              linkUrl="/this-month-task"
+              color="#fcc419"
+            />
 
+            <NavLink
+              activeClassName="active"
+              className="navlink-item"
+              to="/add-new-task"
+            >
+              Add New Task
+            </NavLink>
+          </div>
+        ) : (
+          <Redirect to="/" />
+        )}
+        {currentUser ? (
+          <p onClick={() => auth.signOut()} className="navlink-item">
+            Sign out
+          </p>
+        ) : (
           <NavLink
             activeClassName="active"
             className="navlink-item"
-            to="/add-new-task"
+            to="/signin"
           >
-            Add New Task
+            Sign In
           </NavLink>
-        </div>
-      ) : (
-        <Redirect to="/" />
-      )}
-      {currentUser ? (
-        <p onClick={() => auth.signOut()} className="navlink-item">
-          Sign out
-        </p>
-      ) : (
-        <NavLink activeClassName="active" className="navlink-item" to="/signin">
-          Sign In
-        </NavLink>
-      )}
-    </div>
+        )}
+      </div>
+    </>
   );
 };
 
