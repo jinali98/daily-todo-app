@@ -11,7 +11,7 @@ const CustomInput = ({ handleChange, label, ...otherProps }) => {
   );
 };
 
-export const DateField = ({ error, onChange, value }) => {
+export const DateField = ({ error, onChange, value, onBlur }) => {
   return (
     <TextField
       type="date"
@@ -21,10 +21,11 @@ export const DateField = ({ error, onChange, value }) => {
       onChange={onChange}
       error={error}
       value={value}
+      onBlur={onBlur}
     />
   );
 };
-export const TitleField = ({ error, onChange, value }) => {
+export const TitleField = ({ error, onChange, value, onBlur }) => {
   return (
     <TextField
       label="Task Title"
@@ -35,10 +36,11 @@ export const TitleField = ({ error, onChange, value }) => {
       onChange={onChange}
       error={error}
       value={value}
+      onBlur={onBlur}
     />
   );
 };
-export const DescriptionField = ({ error, onChange, value }) => {
+export const DescriptionField = ({ error, onChange, value, onBlur }) => {
   return (
     <TextField
       label="Description"
@@ -49,10 +51,11 @@ export const DescriptionField = ({ error, onChange, value }) => {
       onChange={onChange}
       error={error}
       value={value}
+      onBlur={onBlur}
     />
   );
 };
-export const DurationField = ({ error, onChange, value }) => {
+export const DurationField = ({ error, onChange, value, onBlur }) => {
   return (
     <TextField
       label="Duration"
@@ -63,6 +66,7 @@ export const DurationField = ({ error, onChange, value }) => {
       onChange={onChange}
       error={error}
       value={value}
+      onBlur={onBlur}
       InputProps={
         ({ inputProps: { min: 1 } },
         {
@@ -73,7 +77,7 @@ export const DurationField = ({ error, onChange, value }) => {
   );
 };
 
-export const TaskPriorTypesField = ({ error, onChange, value }) => {
+export const TaskPriorTypesField = ({ error, onChange, value, onBlur }) => {
   return (
     <TextField
       id="task-type"
@@ -83,6 +87,7 @@ export const TaskPriorTypesField = ({ error, onChange, value }) => {
       onChange={onChange}
       variant="filled"
       error={error}
+      onBlur={onBlur}
       color="primary"
     >
       {convertToArray(taskPriorLevels).map((option) => (

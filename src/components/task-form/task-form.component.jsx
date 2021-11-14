@@ -1,5 +1,6 @@
-import React, { Component, useState } from "react";
+import React from "react";
 import { connect } from "react-redux";
+import useTextFieldValidate from "../../effects/useTextFieldValidate";
 import { addNewTask } from "../../redux/tasks/tasks.actions";
 import { AddTaskButton } from "../buttons/buttons.component";
 import {
@@ -12,51 +13,105 @@ import {
 import "./task-form.styles.css";
 
 const TaskForm = ({ addTodo }) => {
-  const [userInputs, setUserInput] = useState({
-    title: "",
-    description: "",
-    date: "",
-    importance: "",
-    duration: "1",
-  });
-
-  const inputChangeHandler = (props) => (e) => {
-    console.log(e.target.value);
-    setUserInput({ ...userInputs, [props]: e.target.value });
-  };
+  const {
+    value: title,
+    reset: titleReset,
+    hasError: titleHasError,
+    valueChangeHandler: titleChangeHandler,
+    isValid: titleIsValid,
+    onBlur: titleBlurHandler,
+  } = useTextFieldValidate();
+  const {
+    value: description,
+    reset: descriptionReset,
+    hasError: descriptionHasError,
+    valueChangeHandler: descriptionChangeHandler,
+    isValid: descriptionIsValid,
+    onBlur: descriptionBlurHandler,
+  } = useTextFieldValidate();
+  const {
+    value: importance,
+    reset: importanceReset,
+    hasError: importanceHasError,
+    valueChangeHandler: importanceChangeHandler,
+    isValid: importanceIsValid,
+    onBlur: importanceBlurHandler,
+  } = useTextFieldValidate();
+  const {
+    value: date,
+    reset: dateReset,
+    hasError: dateHasError,
+    valueChangeHandler: dateChangeHandler,
+    isValid: dateIsValid,
+    onBlur: dateBlurHandler,
+  } = useTextFieldValidate();
+  const {
+    value: duration,
+    reset: durationReset,
+    hasError: durationHasError,
+    valueChangeHandler: durationChangeHandler,
+    isValid: durationIsValid,
+    onBlur: durationBlurHandler,
+  } = useTextFieldValidate();
 
   const formSubmitHandler = (e) => {
-    console.log("submitted");
     e.preventDefault();
-    console.log(userInputs);
+    if (
+      !titleIsValid ||
+      !descriptionIsValid ||
+      !importanceIsValid ||
+      !durationIsValid ||
+      !dateIsValid
+    )
+      return;
     addTodo({
       id: Math.trunc(Math.random() * 500),
-      ...userInputs,
+      title,
+      description,
+      importance,
+      date,
+      duration,
       status: "inprogress",
     });
+
+    titleReset();
+    descriptionReset();
+    importanceReset();
+    dateReset();
+    durationReset();
   };
 
   return (
     <form onSubmit={formSubmitHandler} className="add-task-form">
       <TitleField
-        value={userInputs.title}
-        onChange={inputChangeHandler("title")}
+        value={title}
+        onChange={titleChangeHandler}
+        error={titleHasError}
+        onBlur={titleBlurHandler}
       />
       <DescriptionField
-        value={userInputs.description}
-        onChange={inputChangeHandler("description")}
+        value={description}
+        onChange={descriptionChangeHandler}
+        error={descriptionHasError}
+        onBlur={descriptionBlurHandler}
       />
       <TaskPriorTypesField
-        value={userInputs.importance}
-        onChange={inputChangeHandler("importance")}
+        value={importance}
+        onChange={importanceChangeHandler}
+        error={importanceHasError}
+        onBlur={importanceBlurHandler}
       />
       <DateField
-        value={userInputs.date}
-        onChange={inputChangeHandler("date")}
+        value={date}
+        onChange={dateChangeHandler}
+        error={dateHasError}
+        onBlur={dateBlurHandler}
       />
       <DurationField
-        value={userInputs.duration}
-        onChange={inputChangeHandler("duration")}
+        value={duration}
+        onChange={durationChangeHandler}
+        error={durationHasError}
+        onBlur={durationBlurHandler}
       />
 
       <AddTaskButton type="submit">Add Task</AddTaskButton>

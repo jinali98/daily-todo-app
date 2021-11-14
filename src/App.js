@@ -18,6 +18,7 @@ import { selectCurrentUser } from "./redux/user/user.selector";
 import "./App.css";
 import ThisMonthPage from "./pages/thisMonthPage/this-month-page.component";
 import HomePage from "./pages/homePage/home-page.component";
+import HeaderNavigation from "./components/header-navigation/header-navigation";
 
 class App extends Component {
   unsubscribeFromAuth = null;
@@ -47,7 +48,7 @@ class App extends Component {
   render() {
     return (
       <div className="dashboard-wrapper">
-        {this.props.currentUser && <Header />}
+        {this.props.currentUser && <HeaderNavigation />}
         <Switch>
           <Route
             exact
