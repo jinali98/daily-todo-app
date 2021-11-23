@@ -1,3 +1,4 @@
+import { Typography } from "@material-ui/core";
 import React from "react";
 import { ReactComponent as LandingContentImage } from "../../assets/images/wfh_1.svg";
 import { AddTaskButton } from "../buttons/buttons.component";
@@ -6,7 +7,9 @@ import "./landing-content-no-tasks.styles.css";
 const LandingContentNoTasks = () => {
   return (
     <div className="landing-content-empty-wrapper">
-      <p>Seems like you have not added any tasks</p>
+      <Typography variant="body1" component="p" color="textPrimary">
+        Seems like you haven't added any tasks
+      </Typography>
       <div className="landing-content-empty-wrapper_image">
         <LandingContentImage />
         <AddTaskButton>Add a new task</AddTaskButton>

@@ -5,7 +5,7 @@ import TaskContainerWrapper from "../../components/task-container-wrapper/task-c
 const HomePage = () => {
   return (
     <TaskContainerWrapper>
-      <Landing />;
+      <Landing />
     </TaskContainerWrapper>
   );
 };
