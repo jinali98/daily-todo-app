@@ -1,12 +1,15 @@
 import { CardActions, CardContent, Chip, Typography } from "@material-ui/core";
 import React from "react";
 import { connect } from "react-redux";
-import { markAsCompleted, removeTask } from "../../redux/tasks/tasks.actions";
+import { updateStatusStart, removeTask } from "../../redux/tasks/tasks.actions";
 import CustomCard from "../custom-card/custom-card.component";
 import { makeStyles } from "@material-ui/core/styles";
 import { DeleteButton, UpdateStatusButton } from "../buttons/buttons.component";
 import { taskPriorLevels } from "../../constants/taskPriorityLevels";
 import { taskTypes } from "../../constants/taskTypes";
+import { createStructuredSelector } from "reselect";
+import { selectAllTasks } from "../../redux/tasks/tasks.selectors";
+import { selectCurrentUser } from "../../redux/user/user.selector";
 
 export const useStyles = makeStyles({
   chipsGroup: {
@@ -23,13 +26,20 @@ export const useStyles = makeStyles({
   },
 });
 
-const TaskCard = ({ task, updateStatus, removeTask }) => {
-  const { title, description, date, duration, importance, status } = task;
+const TaskCard = ({
+  task,
+  updateStatus,
+  removeTask,
+  allTasks,
+  currentUser,
+}) => {
+  const { title, description, date, duration, importance, status, id } = task;
 
+  console.log(id);
   const classess = useStyles();
 
   const updateTaskStatus = () => {
-    updateStatus(task);
+    updateStatus(allTasks, task, currentUser.id);
   };
 
   const removeTaskHandler = () => {
@@ -78,8 +88,14 @@ const TaskCard = ({ task, updateStatus, removeTask }) => {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  updateStatus: (item) => dispatch(markAsCompleted(item)),
+  updateStatus: (allTasks, task, id) =>
+    dispatch(updateStatusStart({ allTasks, task, id })),
   removeTask: (item) => dispatch(removeTask(item)),
 });
 
-export default connect(null, mapDispatchToProps)(TaskCard);
+const mapStateToProps = createStructuredSelector({
+  allTasks: selectAllTasks,
+  currentUser: selectCurrentUser,
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(TaskCard);

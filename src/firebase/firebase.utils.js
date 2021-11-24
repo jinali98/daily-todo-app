@@ -1,6 +1,15 @@
 import firebase from "firebase/compat/app";
 import "firebase/compat/firestore";
 import "firebase/compat/auth";
+import {
+  collectionGroup,
+  query,
+  where,
+  getDocs,
+  getFirestore,
+  doc,
+  updateDoc,
+} from "firebase/firestore";
 
 const config = {
   apiKey: "AIzaSyCn6pd5C6e_v-l-u2NMicBVedJQnsUVTI0",
@@ -34,6 +43,71 @@ export const createUserProfileDocument = async (userAuth) => {
 
   return userRef;
 };
+
+// testing------>>>>>
+// export const createUserTasksDocument = async (uid) => {
+//   if (!uid) return;
+//   const tasksRef = firestore.doc(`tasks/${uid}`);
+//   const tasksSnapShot = await tasksRef.get();
+
+//   if (!tasksSnapShot.exists) {
+//     try {
+//       await tasksRef.set({
+//         allTasks: [{}],
+//       });
+//     } catch (err) {
+//       console.log(err.message);
+//     }
+//   }
+
+//   return tasksRef;
+// };
+
+// testing - 2 -------->>>>>
+//to create a new tasks docuement or get exisiting tasks list
+export const addDocuments = async (uid) => {
+  const todoRef = firestore.doc(`todo/${uid}`);
+  const snapShot = await todoRef.get();
+
+
+  if (!snapShot.exists) {
+    // const { todo } = objectsToAdd;
+    const createdAt = new Date();
+
+    try {
+      await todoRef.set({
+        uid,
+        createdAt,
+        todo: [],
+      });
+    } catch (err) {
+      console.log("error creating the todo", err.message);
+    }
+  }
+
+  return todoRef;
+};
+
+// to update the document
+export const updateDocuments = async (uid, objectsToAdd) => {
+  const userRef = firestore.doc(`todo/${uid}`);
+  console.log("reference", userRef);
+  const snapShot = await userRef.get();
+
+  if (snapShot.exists) {
+    try {
+      await userRef.set({
+        todo: objectsToAdd,
+      });
+    } catch (err) {
+      console.log("error creating the todo", err.message);
+    }
+  }
+
+  return userRef;
+};
+
+
 
 firebase.initializeApp(config);
 

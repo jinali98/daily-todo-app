@@ -1,7 +1,11 @@
 import React from "react";
 import { connect } from "react-redux";
+import { createStructuredSelector } from "reselect";
+import { v4 } from "uuid";
 import useTextFieldValidate from "../../effects/useTextFieldValidate";
-import { addNewTask } from "../../redux/tasks/tasks.actions";
+import { updateTaskStart } from "../../redux/tasks/tasks.actions";
+import { selectAllTasks } from "../../redux/tasks/tasks.selectors";
+import { selectCurrentUser } from "../../redux/user/user.selector";
 import { AddTaskButton } from "../buttons/buttons.component";
 import {
   DateField,
@@ -12,7 +16,9 @@ import {
 } from "../custom-input/custom-input.component";
 import "./task-form.styles.css";
 
-const TaskForm = ({ addTodo }) => {
+const TaskForm = ({ currentUser, updateTaskStart, tasks }) => {
+  const { id } = currentUser;
+
   const {
     value: title,
     reset: titleReset,
@@ -54,7 +60,7 @@ const TaskForm = ({ addTodo }) => {
     onBlur: durationBlurHandler,
   } = useTextFieldValidate();
 
-  const formSubmitHandler = (e) => {
+  const formSubmitHandler = async (e) => {
     e.preventDefault();
     if (
       !titleIsValid ||
@@ -64,15 +70,19 @@ const TaskForm = ({ addTodo }) => {
       !dateIsValid
     )
       return;
-    addTodo({
-      id: Math.trunc(Math.random() * 500),
+
+    const newTodo = {
+      id: v4(),
       title,
       description,
       importance,
       date,
       duration,
       status: "inprogress",
-    });
+    };
+
+    //to update the tasks
+    updateTaskStart(id, [newTodo, ...tasks]);
 
     titleReset();
     descriptionReset();
@@ -119,8 +129,13 @@ const TaskForm = ({ addTodo }) => {
   );
 };
 
-const mapDispatchToProps = (dispatch) => ({
-  addTodo: (item) => dispatch(addNewTask(item)),
+const mapStateToProps = createStructuredSelector({
+  currentUser: selectCurrentUser,
+  tasks: selectAllTasks,
 });
 
-export default connect(null, mapDispatchToProps)(TaskForm);
+const mapDispatchToProps = (dispatch) => ({
+  updateTaskStart: (id, tasks) => dispatch(updateTaskStart({ id, tasks })),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(TaskForm);
