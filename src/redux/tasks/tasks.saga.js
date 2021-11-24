@@ -2,16 +2,23 @@ import { takeLatest, call, all, put } from "redux-saga/effects";
 import { taskActionsTypes } from "./tasks.types";
 import { addDocuments, updateDocuments } from "../../firebase/firebase.utils";
 import {
-  removeTaskFailure,
-  removeTaskSuccess,
   setTaskFailure,
   setTaskSuccess,
-  updateStatusFailure,
-  updateStatusSuccess,
   updateTaskFailure,
   updateTaskSuccess,
 } from "./tasks.actions";
 import { markCompleted, removeTask } from "./tasks.utils";
+
+// extracted common code from updateTasks, statusUpdate and deleteTask
+export function* update(updateDocuments, id, tasks) {
+  try {
+    const todoUpdateRef = yield call(updateDocuments, id, tasks);
+    const snapshot = yield todoUpdateRef.get();
+    yield put(updateTaskSuccess(snapshot.data().todo));
+  } catch (error) {
+    yield put(updateTaskFailure(error));
+  }
+}
 
 export function* setTasks({ payload }) {
   try {
@@ -24,9 +31,7 @@ export function* setTasks({ payload }) {
 }
 export function* updateTasks({ payload: { id, tasks } }) {
   try {
-    const todoUpdateRef = yield call(updateDocuments, id, tasks);
-    const snapshot = yield todoUpdateRef.get();
-    yield put(updateTaskSuccess(snapshot.data().todo));
+    yield update(updateDocuments, id, tasks);
   } catch (error) {
     yield put(updateTaskFailure(error));
   }
@@ -35,11 +40,9 @@ export function* statusUpdate({ payload: { allTasks, task, id } }) {
   const updatedTasksList = markCompleted(allTasks, task);
 
   try {
-    const todoUpdateRef = yield call(updateDocuments, id, updatedTasksList);
-    const snapshot = yield todoUpdateRef.get();
-    yield put(updateStatusSuccess(snapshot.data().todo));
+    yield update(updateDocuments, id, updatedTasksList);
   } catch (error) {
-    yield put(updateStatusFailure(error));
+    yield put(updateTaskFailure(error));
   }
 }
 
@@ -47,11 +50,9 @@ export function* deleteTask({ payload: { allTasks, task, id } }) {
   const updatedTasksList = removeTask(allTasks, task);
 
   try {
-    const todoRemoveRef = yield call(updateDocuments, id, updatedTasksList);
-    const snapshot = yield todoRemoveRef.get();
-    yield put(removeTaskSuccess(snapshot.data().todo));
+    yield update(updateDocuments, id, updatedTasksList);
   } catch (error) {
-    yield put(removeTaskFailure(error));
+    yield put(updateTaskFailure(error));
   }
 }
 

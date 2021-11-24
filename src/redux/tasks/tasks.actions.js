@@ -1,5 +1,14 @@
 import { taskActionsTypes } from "./tasks.types";
 
+export const updateStatusStart = (item) => ({
+  type: taskActionsTypes.UPDATE_STATUS_START,
+  payload: item,
+});
+export const removeTaskStart = (item) => ({
+  type: taskActionsTypes.REMOVE_TASK_START,
+  payload: item,
+});
+
 export const updateTaskStart = (data) => ({
   type: taskActionsTypes.UPDATE_TASK_START,
   payload: data,
@@ -10,36 +19,6 @@ export const updateTaskSuccess = (item) => ({
 });
 export const updateTaskFailure = (error) => ({
   type: taskActionsTypes.UPDATE_TASK_FAILURE,
-  payload: error,
-});
-
-export const updateStatusStart = (item) => ({
-  type: taskActionsTypes.UPDATE_STATUS_START,
-  payload: item,
-});
-export const updateStatusSuccess = (item) => ({
-  type: taskActionsTypes.UPDATE_STATUS_SUCCESS,
-  payload: item,
-});
-export const updateStatusFailure = (error) => ({
-  type: taskActionsTypes.UPDATE_STATUS_FAILURE,
-  payload: error,
-});
-
-export const removeTask = (item) => ({
-  type: taskActionsTypes.REMOVE_TASK,
-  payload: item,
-});
-export const removeTaskStart = (item) => ({
-  type: taskActionsTypes.REMOVE_TASK_START,
-  payload: item,
-});
-export const removeTaskSuccess = (item) => ({
-  type: taskActionsTypes.REMOVE_TASK_SUCCESS,
-  payload: item,
-});
-export const removeTaskFailure = (error) => ({
-  type: taskActionsTypes.REMOVE_TASK_FAILURE,
   payload: error,
 });
 
