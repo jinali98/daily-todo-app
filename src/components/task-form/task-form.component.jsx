@@ -9,6 +9,7 @@ import {
   selectLoadingState,
 } from "../../redux/tasks/tasks.selectors";
 import { selectCurrentUser } from "../../redux/user/user.selector";
+import { formatDate } from "../../utils/formatDate";
 import { AddTaskButton } from "../buttons/buttons.component";
 import {
   DateField,
@@ -79,7 +80,7 @@ const TaskForm = ({ currentUser, updateTaskStart, tasks }) => {
       title,
       description,
       importance,
-      date,
+      date: formatDate(date),
       duration,
       status: "inprogress",
     };

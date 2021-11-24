@@ -7,7 +7,6 @@ import TaskHeading from "../../components/task-heading/task-heading.component";
 import TaskContainer from "../../components/tasks-container/tasks-container.component";
 
 const ThisMonthPage = ({ monthTasks }) => {
-  console.log(monthTasks);
   return (
     <TaskContainerWrapper>
       <TaskHeading>This Month</TaskHeading>

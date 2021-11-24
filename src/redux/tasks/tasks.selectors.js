@@ -11,10 +11,13 @@ export const selectAllTasks = createSelector(
   [selectTasks],
   (tasks) => tasks.allTasks
 );
+//select loading state
 export const selectLoadingState = createSelector(
   [selectTasks],
   (tasks) => tasks.loading
 );
+
+// select error state
 export const selectErrorState = createSelector(
   [selectTasks],
   (tasks) => tasks.errorMessage.message
