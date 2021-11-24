@@ -11,7 +11,6 @@ Daily is a task management app with statistical analysis of various types of tas
 - Redux for state management 
 - React-router for routing 
 - Redux- reselect to memorize expensive calculations 
-- Redux- persist to store data in local storage
 - Redux-Saga for asynchronous actions like fetching data from Firestore
 - Material UI for forms, cards, buttons and Input Fields 
 - SASS to keep the concerns of styling separated and to make responsive design
