@@ -22,14 +22,15 @@ Daily is a task management app with statistical analysis of various types of tas
 
 ## Complete MVP
 1.	CRUD operations on tasks:
-Add and Update task cards based on:
-- Task Priority level
-- Date
-- Task title
-- Task Description 
-- Duration 
+    Add and Update task cards based on:
+    - Task Priority level
+    - Date
+    - Task title
+    - Task Description 
+    - Duration
+    - Status 
 
-Delete task cards
+    Delete task cards
 
 2.	Update status of each task from pending to completed or back to pending 
 
