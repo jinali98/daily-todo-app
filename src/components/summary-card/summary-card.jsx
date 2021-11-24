@@ -1,17 +1,8 @@
 import { CardContent, Typography } from "@material-ui/core";
 import React from "react";
 import CustomCard from "../custom-card/custom-card.component";
-import { makeStyles } from "@material-ui/core/styles";
+import { useStyles } from "./summary-card.styles";
 
-export const useStyles = makeStyles({
-  root: {
-    display: "flex",
-    flexDirection: "column",
-    gap: "20px",
-    justifyContent: "space-between",
-    alignItems: "center",
-  },
-});
 const SummaryCard = ({ title, number }) => {
   const classess = useStyles();
   return (

@@ -1,17 +1,9 @@
 import React from "react";
 import clsx from "clsx";
-import { makeStyles } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
 import Button from "@material-ui/core/Button";
 import Header from "../header/header.component";
-const useStyles = makeStyles({
-  list: {
-    width: 300,
-  },
-  fullList: {
-    width: "auto",
-  },
-});
+import { useStyles } from "./drawer.styles";
 
 export default function DrawerNavigation() {
   const classes = useStyles();

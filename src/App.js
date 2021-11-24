@@ -24,13 +24,12 @@ import {
   selectLoadingState,
 } from "./redux/tasks/tasks.selectors";
 import SnackBarAlert from "./components/snack-bar/snack-bar.component";
-import BackdropLoadingSpinner from "./components/backdrop/backdrop.component";
 
 class App extends Component {
   unsubscribeFromAuth = null;
 
   componentDidMount() {
-    const { setCurrentUser, setTasksStart, tasks } = this.props;
+    const { setCurrentUser, setTasksStart } = this.props;
 
     this.unsubscribeFromAuth = auth.onAuthStateChanged(async (user) => {
       if (user) {

@@ -6,28 +6,13 @@ import {
   removeTaskStart,
 } from "../../redux/tasks/tasks.actions";
 import CustomCard from "../custom-card/custom-card.component";
-import { makeStyles } from "@material-ui/core/styles";
 import { DeleteButton, UpdateStatusButton } from "../buttons/buttons.component";
 import { taskPriorLevels } from "../../constants/taskPriorityLevels";
 import { taskTypes } from "../../constants/taskTypes";
 import { createStructuredSelector } from "reselect";
 import { selectAllTasks } from "../../redux/tasks/tasks.selectors";
 import { selectCurrentUser } from "../../redux/user/user.selector";
-
-export const useStyles = makeStyles({
-  chipsGroup: {
-    display: "flex",
-    justifyContent: "space-between",
-    marginBottom: "10px",
-  },
-  additionalInfo: {
-    marginTop: "20px",
-  },
-  buttonGrp: {
-    display: "flex",
-    justifyContent: "space-between",
-  },
-});
+import { useStyles } from "./task-card.styles";
 
 const TaskCard = ({
   task,
@@ -36,9 +21,8 @@ const TaskCard = ({
   allTasks,
   currentUser,
 }) => {
-  const { title, description, date, duration, importance, status, id } = task;
+  const { title, description, date, duration, importance, status } = task;
 
-  console.log(id);
   const classess = useStyles();
 
   const updateTaskStatus = () => {
@@ -62,7 +46,6 @@ const TaskCard = ({
             label={status}
             color="primary"
             style={{ backgroundColor: `${taskTypes[status].color}` }}
-            // variant="outlined"
           />
         </div>
         <Typography variant="h5" component="h2" color="textPrimary">

@@ -18,9 +18,8 @@ import {
   TitleField,
 } from "../custom-input/custom-input.component";
 import "./task-form.styles.css";
-import SnackBarAlert from "../snack-bar/snack-bar.component";
 
-const TaskForm = ({ currentUser, updateTaskStart, tasks, loading }) => {
+const TaskForm = ({ currentUser, updateTaskStart, tasks }) => {
   const { id } = currentUser;
 
   const {
@@ -136,7 +135,6 @@ const TaskForm = ({ currentUser, updateTaskStart, tasks, loading }) => {
 const mapStateToProps = createStructuredSelector({
   currentUser: selectCurrentUser,
   tasks: selectAllTasks,
-  loading: selectLoadingState,
 });
 
 const mapDispatchToProps = (dispatch) => ({
