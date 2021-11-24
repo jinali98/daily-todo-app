@@ -4,7 +4,10 @@ import { createStructuredSelector } from "reselect";
 import { v4 } from "uuid";
 import useTextFieldValidate from "../../effects/useTextFieldValidate";
 import { updateTaskStart } from "../../redux/tasks/tasks.actions";
-import { selectAllTasks } from "../../redux/tasks/tasks.selectors";
+import {
+  selectAllTasks,
+  selectLoadingState,
+} from "../../redux/tasks/tasks.selectors";
 import { selectCurrentUser } from "../../redux/user/user.selector";
 import { AddTaskButton } from "../buttons/buttons.component";
 import {
@@ -15,8 +18,9 @@ import {
   TitleField,
 } from "../custom-input/custom-input.component";
 import "./task-form.styles.css";
+import SnackBarAlert from "../snack-bar/snack-bar.component";
 
-const TaskForm = ({ currentUser, updateTaskStart, tasks }) => {
+const TaskForm = ({ currentUser, updateTaskStart, tasks, loading }) => {
   const { id } = currentUser;
 
   const {
@@ -132,6 +136,7 @@ const TaskForm = ({ currentUser, updateTaskStart, tasks }) => {
 const mapStateToProps = createStructuredSelector({
   currentUser: selectCurrentUser,
   tasks: selectAllTasks,
+  loading: selectLoadingState,
 });
 
 const mapDispatchToProps = (dispatch) => ({

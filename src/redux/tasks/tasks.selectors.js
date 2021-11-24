@@ -11,7 +11,14 @@ export const selectAllTasks = createSelector(
   [selectTasks],
   (tasks) => tasks.allTasks
 );
-
+export const selectLoadingState = createSelector(
+  [selectTasks],
+  (tasks) => tasks.loading
+);
+export const selectErrorState = createSelector(
+  [selectTasks],
+  (tasks) => tasks.errorMessage.message
+);
 //select completed tasks
 export const selectCompletedTasks = createSelector(
   [selectAllTasks],

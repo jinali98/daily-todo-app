@@ -1,7 +1,10 @@
 import { CardActions, CardContent, Chip, Typography } from "@material-ui/core";
 import React from "react";
 import { connect } from "react-redux";
-import { updateStatusStart, removeTask } from "../../redux/tasks/tasks.actions";
+import {
+  updateStatusStart,
+  removeTaskStart,
+} from "../../redux/tasks/tasks.actions";
 import CustomCard from "../custom-card/custom-card.component";
 import { makeStyles } from "@material-ui/core/styles";
 import { DeleteButton, UpdateStatusButton } from "../buttons/buttons.component";
@@ -43,7 +46,7 @@ const TaskCard = ({
   };
 
   const removeTaskHandler = () => {
-    removeTask(task);
+    removeTask(allTasks, task, currentUser.id);
   };
 
   return (
@@ -90,7 +93,8 @@ const TaskCard = ({
 const mapDispatchToProps = (dispatch) => ({
   updateStatus: (allTasks, task, id) =>
     dispatch(updateStatusStart({ allTasks, task, id })),
-  removeTask: (item) => dispatch(removeTask(item)),
+  removeTask: (allTasks, task, id) =>
+    dispatch(removeTaskStart({ allTasks, task, id })),
 });
 
 const mapStateToProps = createStructuredSelector({

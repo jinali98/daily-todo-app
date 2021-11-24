@@ -2,6 +2,8 @@ import { takeLatest, call, all, put } from "redux-saga/effects";
 import { taskActionsTypes } from "./tasks.types";
 import { addDocuments, updateDocuments } from "../../firebase/firebase.utils";
 import {
+  removeTaskFailure,
+  removeTaskSuccess,
   setTaskFailure,
   setTaskSuccess,
   updateStatusFailure,
@@ -9,7 +11,7 @@ import {
   updateTaskFailure,
   updateTaskSuccess,
 } from "./tasks.actions";
-import { markCompleted } from "./tasks.utils";
+import { markCompleted, removeTask } from "./tasks.utils";
 
 export function* setTasks({ payload }) {
   try {
@@ -41,6 +43,18 @@ export function* statusUpdate({ payload: { allTasks, task, id } }) {
   }
 }
 
+export function* deleteTask({ payload: { allTasks, task, id } }) {
+  const updatedTasksList = removeTask(allTasks, task);
+
+  try {
+    const todoRemoveRef = yield call(updateDocuments, id, updatedTasksList);
+    const snapshot = yield todoRemoveRef.get();
+    yield put(removeTaskSuccess(snapshot.data().todo));
+  } catch (error) {
+    yield put(removeTaskFailure(error));
+  }
+}
+
 export function* onSetTasks() {
   yield takeLatest(taskActionsTypes.SET_TASKS_START, setTasks);
 }
@@ -50,7 +64,15 @@ export function* onUpdateTasks() {
 export function* onStatusUpdate() {
   yield takeLatest(taskActionsTypes.UPDATE_STATUS_START, statusUpdate);
 }
+export function* onTaskRemove() {
+  yield takeLatest(taskActionsTypes.REMOVE_TASK_START, deleteTask);
+}
 
 export function* taskSagas() {
-  yield all([call(onSetTasks), call(onUpdateTasks), call(onStatusUpdate)]);
+  yield all([
+    call(onSetTasks),
+    call(onUpdateTasks),
+    call(onStatusUpdate),
+    call(onTaskRemove),
+  ]);
 }

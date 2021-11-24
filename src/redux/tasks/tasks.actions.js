@@ -30,6 +30,18 @@ export const removeTask = (item) => ({
   type: taskActionsTypes.REMOVE_TASK,
   payload: item,
 });
+export const removeTaskStart = (item) => ({
+  type: taskActionsTypes.REMOVE_TASK_START,
+  payload: item,
+});
+export const removeTaskSuccess = (item) => ({
+  type: taskActionsTypes.REMOVE_TASK_SUCCESS,
+  payload: item,
+});
+export const removeTaskFailure = (error) => ({
+  type: taskActionsTypes.REMOVE_TASK_FAILURE,
+  payload: error,
+});
 
 export const setTaskStart = (items) => ({
   type: taskActionsTypes.SET_TASKS_START,
