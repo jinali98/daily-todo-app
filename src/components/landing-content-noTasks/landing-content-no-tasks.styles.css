@@ -11,3 +11,19 @@
   width: 400px;
   margin: auto;
 }
+@media (max-width: 992px) {
+  .landing-content-empty-wrapper {
+    width: 80%;
+  }
+}
+
+@media (max-width: 768px) {
+  .landing-content-empty-wrapper {
+    width: 100%;
+  }
+
+  .landing-content-empty-wrapper_image {
+    width: 250px;
+    height: max-content;
+  }
+}

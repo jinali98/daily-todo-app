@@ -9,7 +9,7 @@ import { connect } from "react-redux";
 const Signin = ({ signinStart }) => {
   return (
     <div className="sign-in-page">
-      <TaskHeading>DAILY-TO-DO</TaskHeading>
+      <TaskHeading>DAILY</TaskHeading>
       <div className="sign-in-page_image-container">
         <SignInImage />
       </div>

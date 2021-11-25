@@ -1,15 +1,21 @@
 .sign-in-page {
   width: 30vw;
-  height: 58vh;
+  height: max-content;
   text-align: center;
   margin: 100px auto;
   background-color: #eebefa;
   border-radius: 12px;
-  padding-top: 3rem;
+  padding: 3rem 0;
 }
 
 .sign-in-page_image-container {
   width: 300px;
   margin: auto;
   margin-bottom: 1rem;
+}
+@media (max-width: 992px) {
+  .sign-in-page {
+    width: max-content;
+    padding: 3rem 1rem;
+  }
 }

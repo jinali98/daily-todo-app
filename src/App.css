@@ -10,3 +10,9 @@ a {
   width: 100vw;
   /* gap: 2rem; */
 }
+
+@media (max-width: 992px) {
+  .dashboard-wrapper {
+    flex-direction: column;
+  }
+}

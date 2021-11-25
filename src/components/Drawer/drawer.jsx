@@ -4,7 +4,7 @@ import Drawer from "@material-ui/core/Drawer";
 import Button from "@material-ui/core/Button";
 import Header from "../header/header.component";
 import { useStyles } from "./drawer.styles";
-
+import MenuIcon from "@material-ui/icons/Menu";
 export default function DrawerNavigation() {
   const classes = useStyles();
   const [state, setState] = React.useState({
@@ -36,7 +36,9 @@ export default function DrawerNavigation() {
   return (
     <div>
       <React.Fragment>
-        <Button onClick={toggleDrawer("left", true)}>{"left"}</Button>
+        <Button onClick={toggleDrawer("left", true)}>
+          <MenuIcon fontSize="large" />
+        </Button>
         <Drawer
           anchor={"left"}
           open={state["left"]}

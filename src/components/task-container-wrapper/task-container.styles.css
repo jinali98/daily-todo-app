@@ -4,3 +4,13 @@
   overflow-y: scroll;
   padding: 3rem;
 }
+
+@media (max-width: 992px) {
+  .main-task-container {
+    width: 95%;
+    height: max-content;
+    overflow-x: hidden;
+  }
+}
+@media (max-width: 360px) {
+}

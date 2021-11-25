@@ -5,3 +5,8 @@
   flex-direction: column;
   gap: 20px;
 }
+@media (max-width: 992px) {
+  .add-task-form {
+    width: 100%;
+  }
+}
