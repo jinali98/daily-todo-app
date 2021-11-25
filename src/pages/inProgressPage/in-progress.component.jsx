@@ -4,12 +4,22 @@ import TaskContainerWrapper from "../../components/task-container-wrapper/task-c
 import TaskHeading from "../../components/task-heading/task-heading.component";
 import TaskContainer from "../../components/tasks-container/tasks-container.component";
 import { selectPendingTasks } from "../../redux/tasks/tasks.selectors";
+import LandingContentNoTasks from "../../components/landing-content-noTasks/landing-content-noTasks";
 
 const InProgress = ({ pendingTasks }) => {
   return (
     <TaskContainerWrapper>
       <TaskHeading>Inprogress Tasks</TaskHeading>
-      <TaskContainer tasks={pendingTasks} />
+      {pendingTasks.length > 0 ? (
+        <TaskContainer tasks={pendingTasks} />
+      ) : (
+        <LandingContentNoTasks
+          message="WOW! you don't have anymore tasks to complete"
+          buttonText="Add a new task"
+          urlParam="/add-new-task"
+          pending={true}
+        />
+      )}
     </TaskContainerWrapper>
   );
 };

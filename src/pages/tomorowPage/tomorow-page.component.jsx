@@ -5,13 +5,22 @@ import TaskContainerWrapper from "../../components/task-container-wrapper/task-c
 import TaskHeading from "../../components/task-heading/task-heading.component";
 import TaskContainer from "../../components/tasks-container/tasks-container.component";
 import { selectTomorowTasks } from "../../redux/tasks/tasks.selectors";
+import LandingContentNoTasks from "../../components/landing-content-noTasks/landing-content-noTasks";
 
 const TomorowPage = ({ tomorowTasks }) => {
-  console.log(tomorowTasks);
   return (
     <TaskContainerWrapper>
       <TaskHeading>Tomorrow</TaskHeading>
-      <TaskContainer tasks={tomorowTasks} />
+      {tomorowTasks.length > 0 ? (
+        <TaskContainer tasks={tomorowTasks} />
+      ) : (
+        <LandingContentNoTasks
+          message="Seems like you are free tomorrow!"
+          buttonText="view this month tasks"
+          urlParam="/this-month-task"
+          tomorrow={true}
+        />
+      )}
     </TaskContainerWrapper>
   );
 };

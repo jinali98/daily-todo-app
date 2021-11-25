@@ -5,12 +5,22 @@ import { selectThisMonthTasks } from "../../redux/tasks/tasks.selectors";
 import TaskContainerWrapper from "../../components/task-container-wrapper/task-container-wrapper.component";
 import TaskHeading from "../../components/task-heading/task-heading.component";
 import TaskContainer from "../../components/tasks-container/tasks-container.component";
+import LandingContentNoTasks from "../../components/landing-content-noTasks/landing-content-noTasks";
 
 const ThisMonthPage = ({ monthTasks }) => {
   return (
     <TaskContainerWrapper>
       <TaskHeading>This Month</TaskHeading>
-      <TaskContainer tasks={monthTasks} />
+      {monthTasks.length > 0 ? (
+        <TaskContainer tasks={monthTasks} />
+      ) : (
+        <LandingContentNoTasks
+          message="No more tasks for this month!"
+          buttonText="Add a new task"
+          urlParam="/add-new-task"
+          month={true}
+        />
+      )}
     </TaskContainerWrapper>
   );
 };

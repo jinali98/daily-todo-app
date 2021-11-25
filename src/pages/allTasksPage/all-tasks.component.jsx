@@ -4,12 +4,21 @@ import TaskContainerWrapper from "../../components/task-container-wrapper/task-c
 import TaskHeading from "../../components/task-heading/task-heading.component";
 import TaskContainer from "../../components/tasks-container/tasks-container.component";
 import { selectAllTasks } from "../../redux/tasks/tasks.selectors";
-
+import LandingContentNoTasks from "../../components/landing-content-noTasks/landing-content-noTasks";
 const AllTasks = ({ allTasks }) => {
   return (
     <TaskContainerWrapper>
       <TaskHeading>All Tasks</TaskHeading>
-      <TaskContainer tasks={allTasks} />
+      {allTasks.length > 0 ? (
+        <TaskContainer tasks={allTasks} />
+      ) : (
+        <LandingContentNoTasks
+          message="Opps! you haven't added any task"
+          buttonText="Add a new task"
+          urlParam="/add-new-task"
+          all={true}
+        />
+      )}
     </TaskContainerWrapper>
   );
 };
