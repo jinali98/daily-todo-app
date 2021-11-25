@@ -21,12 +21,28 @@ const CategorySummary = ({
 }) => {
   return (
     <div className="category-summary-container">
-      <SummaryCard title="All Tasks" number={allTasks.length} />
-      <SummaryCard title="Completed Tasks" number={completedtasks.length} />
-      <SummaryCard title="Pending Tasks" number={inprogressTasks.length} />
-      <SummaryCard title="Today" number={todayTasks.length} />
-      <SummaryCard title="Tomorrow" number={tomorowTasks.length} />
-      <SummaryCard title="This Month" number={thisMonthTask.length} />
+      <SummaryCard title="All Tasks" number={allTasks.length} type="all" />
+      <SummaryCard
+        title="Completed Tasks"
+        number={completedtasks.length}
+        type="completed"
+      />
+      <SummaryCard
+        title="Pending Tasks"
+        number={inprogressTasks.length}
+        type="inprogress"
+      />
+      <SummaryCard title="Today" number={todayTasks.length} type="today" />
+      <SummaryCard
+        title="Tomorrow"
+        number={tomorowTasks.length}
+        type="tomorrow"
+      />
+      <SummaryCard
+        title="This Month"
+        number={thisMonthTask.length}
+        type="month"
+      />
     </div>
   );
 };

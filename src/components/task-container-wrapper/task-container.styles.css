@@ -10,7 +10,11 @@
     width: 95%;
     height: max-content;
     overflow-x: hidden;
+    padding: 3rem 5rem;
   }
 }
 @media (max-width: 360px) {
+  .main-task-container {
+    padding: 3rem 1rem;
+  }
 }

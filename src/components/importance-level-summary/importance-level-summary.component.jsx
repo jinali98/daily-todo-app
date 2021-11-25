@@ -17,13 +17,30 @@ const ImportanceLevelSummary = ({
 }) => {
   return (
     <div className="importance-level-summary-container">
-      <SummaryCard title="Critical Level Tasks" number={criticalTasks.length} />
+      <SummaryCard
+        title="Critical Level Tasks"
+        number={criticalTasks.length}
+        type="Critical"
+        importaceLevel={true}
+      />
       <SummaryCard
         title="Important Level Tasks"
         number={importantTasks.length}
+        type="Important"
+        importaceLevel={true}
       />
-      <SummaryCard title="Normal Level Tasks" number={normalTasks.length} />
-      <SummaryCard title="Low Level Tasks" number={lowTasks.length} />
+      <SummaryCard
+        title="Normal Level Tasks"
+        number={normalTasks.length}
+        type="Normal"
+        importaceLevel={true}
+      />
+      <SummaryCard
+        title="Low Level Tasks"
+        number={lowTasks.length}
+        type="Low"
+        importaceLevel={true}
+      />
     </div>
   );
 };

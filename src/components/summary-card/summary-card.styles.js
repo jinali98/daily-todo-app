@@ -8,4 +8,6 @@ export const useStyles = makeStyles({
     justifyContent: "space-between",
     alignItems: "center",
   },
+
+  summaryCardWrapper: {},
 });

@@ -1,19 +1,7 @@
 .tasks-container {
+  width: 100%;
   margin: 1rem auto;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
   row-gap: 20px;
-}
-@media (max-width: 992px) {
-  .tasks-container {
-    /* margin: 1rem 2rem; */
-    grid-template-columns: repeat(1, 1fr);
-  }
-}
-@media (max-width: 360px) {
-  .tasks-container {
-    margin: 1rem 0;
-    width: 95vw;
-    grid-template-columns: repeat(1, 1fr);
-  }
 }

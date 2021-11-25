@@ -1,4 +1,11 @@
 .landing-wrapper {
-  width: 70vw;
+  width: calc(100vw-350px);
   margin: auto;
+}
+
+@media (max-width: 768px) {
+  .landing-wrapper {
+    width: 90vw;
+    margin: 0%;
+  }
 }

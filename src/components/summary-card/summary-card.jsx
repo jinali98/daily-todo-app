@@ -1,12 +1,23 @@
 import { CardContent, Typography } from "@material-ui/core";
 import React from "react";
+import { taskPriorLevels } from "../../constants/taskPriorityLevels";
+import { taskTypes } from "../../constants/taskTypes.js";
 import CustomCard from "../custom-card/custom-card.component";
 import { useStyles } from "./summary-card.styles";
-
-const SummaryCard = ({ title, number }) => {
+import "./summary-card.styles.css";
+const SummaryCard = ({ title, number, type, importaceLevel }) => {
   const classess = useStyles();
+  let style = importaceLevel
+    ? {
+        border: `5px solid ${taskPriorLevels[type].color}`,
+      }
+    : {
+        border: `5px solid ${taskTypes[type].color}`,
+      };
+  // style = category &&
+
   return (
-    <CustomCard>
+    <CustomCard className={classess.summaryCardWrapper} style={style}>
       <CardContent className={classess.root}>
         <Typography variant="h6" component="h2" color="textPrimary">
           {title}

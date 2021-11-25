@@ -1,11 +1,16 @@
 import { Typography } from "@material-ui/core";
 import React from "react";
 import SummaryCardContainer from "../summaryCard-container/summaryCard-container";
-
+import "./landing-content.styles.css";
 const LandingContent = () => {
   return (
-    <div>
-      <Typography variant="h6" component="p" color="textPrimary">
+    <div className="landing-content-container">
+      <Typography
+        className="summary-msg"
+        variant="h6"
+        component="p"
+        color="textPrimary"
+      >
         Here is a summary of all your tasks
       </Typography>
       <SummaryCardContainer />
