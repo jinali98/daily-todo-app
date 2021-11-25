@@ -22,7 +22,13 @@ import {
   selectLoadingState,
 } from "./redux/tasks/tasks.selectors";
 import SnackBarAlert from "./components/snack-bar/snack-bar.component";
+import { ThemeProvider, createMuiTheme } from "@material-ui/core/styles";
 
+const theme = createMuiTheme({
+  typography: {
+    fontFamily: ["Poppins", "sans-serif"].join(","),
+  },
+});
 const App = ({ loading, error, currentUser, setTasksStart }) => {
   useEffect(() => {
     if (currentUser) {
@@ -31,7 +37,7 @@ const App = ({ loading, error, currentUser, setTasksStart }) => {
   }, [currentUser, setTasksStart]);
 
   return (
-    <>
+    <ThemeProvider theme={theme}>
       {loading && <SnackBarAlert message="working on it..." severity="info" />}
       {error && <SnackBarAlert message={error} severity="error" />}
       <div className="dashboard-wrapper">
@@ -94,7 +100,7 @@ const App = ({ loading, error, currentUser, setTasksStart }) => {
           />
         </Switch>
       </div>
-    </>
+    </ThemeProvider>
   );
 };
 

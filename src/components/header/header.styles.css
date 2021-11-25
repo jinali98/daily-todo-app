@@ -9,9 +9,9 @@
 }
 
 .logo {
-  font-family: cursive;
   font-size: 30px;
   margin: 0;
+  font-weight: 700;
 }
 .navlink-item {
   width: 100%;
