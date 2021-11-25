@@ -1,15 +1,6 @@
 import firebase from "firebase/compat/app";
 import "firebase/compat/firestore";
 import "firebase/compat/auth";
-import {
-  collectionGroup,
-  query,
-  where,
-  getDocs,
-  getFirestore,
-  doc,
-  updateDoc,
-} from "firebase/firestore";
 
 const config = {
   apiKey: "AIzaSyCn6pd5C6e_v-l-u2NMicBVedJQnsUVTI0",
@@ -44,31 +35,10 @@ export const createUserProfileDocument = async (userAuth) => {
   return userRef;
 };
 
-// testing------>>>>>
-// export const createUserTasksDocument = async (uid) => {
-//   if (!uid) return;
-//   const tasksRef = firestore.doc(`tasks/${uid}`);
-//   const tasksSnapShot = await tasksRef.get();
-
-//   if (!tasksSnapShot.exists) {
-//     try {
-//       await tasksRef.set({
-//         allTasks: [{}],
-//       });
-//     } catch (err) {
-//       console.log(err.message);
-//     }
-//   }
-
-//   return tasksRef;
-// };
-
-// testing - 2 -------->>>>>
 //to create a new tasks docuement or get exisiting tasks list
 export const addDocuments = async (uid) => {
   const todoRef = firestore.doc(`todo/${uid}`);
   const snapShot = await todoRef.get();
-
 
   if (!snapShot.exists) {
     // const { todo } = objectsToAdd;
@@ -107,15 +77,13 @@ export const updateDocuments = async (uid, objectsToAdd) => {
   return userRef;
 };
 
-
-
 firebase.initializeApp(config);
 
 export const auth = firebase.auth();
 export const firestore = firebase.firestore();
 
-const provider = new firebase.auth.GoogleAuthProvider();
-provider.setCustomParameters({ prompt: "select_account" });
-export const signInWithGoogle = () => auth.signInWithPopup(provider);
+export const googleProvider = new firebase.auth.GoogleAuthProvider();
+googleProvider.setCustomParameters({ prompt: "select_account" });
+export const signInWithGoogle = () => auth.signInWithPopup(googleProvider);
 
 export default firebase;

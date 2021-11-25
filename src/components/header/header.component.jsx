@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { Link, NavLink } from "react-router-dom";
 import { createStructuredSelector } from "reselect";
-import { auth } from "../../firebase/firebase.utils";
 import {
   selectAllTasks,
   selectCompletedTasks,
@@ -12,6 +11,7 @@ import {
   selectTodayTasks,
   selectTomorowTasks,
 } from "../../redux/tasks/tasks.selectors";
+import { signOutStart } from "../../redux/user/user.actions";
 import { selectCurrentUser } from "../../redux/user/user.selector";
 
 import CustomNavLink from "../custom-navLink/custom-navLink.component";
@@ -26,6 +26,7 @@ const Header = ({
   todayTasks,
   tmrwTasks,
   thisMonthTasks,
+  signOutStart,
 }) => {
   return (
     <>
@@ -86,7 +87,7 @@ const Header = ({
           <Redirect to="/" />
         )}
         {currentUser ? (
-          <p onClick={() => auth.signOut()} className="navlink-item">
+          <p onClick={() => signOutStart()} className="navlink-item">
             Sign out
           </p>
         ) : (
@@ -112,5 +113,7 @@ const mapStateToProps = createStructuredSelector({
   tmrwTasks: selectTomorowTasks,
   thisMonthTasks: selectThisMonthTasks,
 });
-
-export default connect(mapStateToProps)(Header);
+const mapDispatchToProps = (dispatch) => ({
+  signOutStart: () => dispatch(signOutStart()),
+});
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

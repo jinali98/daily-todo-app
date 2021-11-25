@@ -38,7 +38,6 @@ export function* updateTasks({ payload: { id, tasks } }) {
 }
 export function* statusUpdate({ payload: { allTasks, task, id } }) {
   const updatedTasksList = markCompleted(allTasks, task);
-
   try {
     yield update(updateDocuments, id, updatedTasksList);
   } catch (error) {
@@ -48,7 +47,6 @@ export function* statusUpdate({ payload: { allTasks, task, id } }) {
 
 export function* deleteTask({ payload: { allTasks, task, id } }) {
   const updatedTasksList = removeTask(allTasks, task);
-
   try {
     yield update(updateDocuments, id, updatedTasksList);
   } catch (error) {
