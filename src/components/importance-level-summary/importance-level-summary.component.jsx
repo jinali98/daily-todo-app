@@ -8,7 +8,7 @@ import {
   selectNormaltasks,
 } from "../../redux/tasks/tasks.selectors";
 import { connect } from "react-redux";
-import "./importance-level-summary.styles.css";
+import "./importance-level-summary.styles.scss";
 const ImportanceLevelSummary = ({
   normalTasks,
   lowTasks,

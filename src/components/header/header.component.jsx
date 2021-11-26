@@ -16,7 +16,7 @@ import { selectCurrentUser } from "../../redux/user/user.selector";
 
 import CustomNavLink from "../custom-navLink/custom-navLink.component";
 
-import "./header.styles.css";
+import "./header.styles.scss";
 
 const Header = ({
   currentUser,

@@ -10,7 +10,7 @@ import {
   selectTomorowTasks,
 } from "../../redux/tasks/tasks.selectors";
 import { connect } from "react-redux";
-import "./category-summary.styles.css";
+import "./category-summary.styles.scss";
 const CategorySummary = ({
   allTasks,
   completedtasks,

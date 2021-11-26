@@ -1,9 +1,7 @@
 import React from "react";
 import { Card } from "@material-ui/core";
-import { useStyles } from "./custom-card.styles";
-import "./custom-card.styles.css";
+import "./custom-card.styles.scss";
 const CustomCard = ({ children, style }) => {
-  const classes = useStyles();
   return (
     <Card className="custom-card" style={style}>
       {children}

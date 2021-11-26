@@ -4,7 +4,7 @@ import { taskPriorLevels } from "../../constants/taskPriorityLevels";
 import { taskTypes } from "../../constants/taskTypes.js";
 import CustomCard from "../custom-card/custom-card.component";
 import { useStyles } from "./summary-card.styles";
-import "./summary-card.styles.css";
+import "./summary-card.styles.scss";
 const SummaryCard = ({ title, number, type, importaceLevel }) => {
   const classess = useStyles();
   let style = importaceLevel

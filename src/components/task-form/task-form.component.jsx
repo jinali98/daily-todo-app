@@ -18,7 +18,7 @@ import {
   TaskPriorTypesField,
   TitleField,
 } from "../custom-input/custom-input.component";
-import "./task-form.styles.css";
+import "./task-form.styles.scss";
 
 const TaskForm = ({ currentUser, updateTaskStart, tasks }) => {
   const { id } = currentUser;

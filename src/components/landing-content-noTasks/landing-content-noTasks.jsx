@@ -10,7 +10,7 @@ import { ReactComponent as TomorrowTaskPageImage } from "../../assets/images/wfh
 import { ReactComponent as ThisMonthPageImage } from "../../assets/images/wfh_6.svg";
 import { AddTaskButton } from "../buttons/buttons.component";
 
-import "./landing-content-no-tasks.styles.css";
+import "./landing-content-no-tasks.styles.scss";
 const LandingContentNoTasks = ({
   history,
   message,
