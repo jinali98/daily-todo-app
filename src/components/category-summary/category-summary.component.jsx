@@ -1,5 +1,7 @@
 import React from "react";
 import { createStructuredSelector } from "reselect";
+import { connect } from "react-redux";
+
 import SummaryCard from "../summary-card/summary-card";
 import {
   selectAllTasks,
@@ -9,8 +11,9 @@ import {
   selectTodayTasks,
   selectTomorowTasks,
 } from "../../redux/tasks/tasks.selectors";
-import { connect } from "react-redux";
+
 import "./category-summary.styles.scss";
+
 const CategorySummary = ({
   allTasks,
   completedtasks,

@@ -1,11 +1,15 @@
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
+
 import { selectAllTasks } from "../../redux/tasks/tasks.selectors";
 import { selectCurrentUserDisplayName } from "../../redux/user/user.selector";
+
 import LandingContentNoTasks from "../landing-content-noTasks/landing-content-noTasks";
 import LandingContent from "../landing-content/landing-content";
 import TaskHeading from "../task-heading/task-heading.component";
+
 import "./landing.styles.scss";
+
 const Landing = ({ allTasks, displayName }) => {
   return (
     <div className="landing-wrapper" style={{ margin: "45px" }}>

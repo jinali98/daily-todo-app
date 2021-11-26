@@ -2,15 +2,6 @@ import { InputAdornment, MenuItem, TextField } from "@material-ui/core";
 import { taskPriorLevels } from "../../constants/taskPriorityLevels";
 import { convertToArray } from "../../utils/convertToAnArray";
 
-// const CustomInput = ({ handleChange, label, ...otherProps }) => {
-//   return (
-//     <div className="group">
-//       <label className="">{label}</label>
-//       <input className="form-input" onChange={handleChange} {...otherProps} />
-//     </div>
-//   );
-// };
-
 export const DateField = ({ error, onChange, value, onBlur }) => {
   return (
     <TextField
@@ -98,5 +89,3 @@ export const TaskPriorTypesField = ({ error, onChange, value, onBlur }) => {
     </TextField>
   );
 };
-
-// export default CustomInput;

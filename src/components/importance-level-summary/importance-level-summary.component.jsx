@@ -1,5 +1,7 @@
 import React from "react";
 import { createStructuredSelector } from "reselect";
+import { connect } from "react-redux";
+
 import SummaryCard from "../summary-card/summary-card";
 import {
   selectCriticalTasks,
@@ -7,8 +9,9 @@ import {
   selectLowTasks,
   selectNormaltasks,
 } from "../../redux/tasks/tasks.selectors";
-import { connect } from "react-redux";
+
 import "./importance-level-summary.styles.scss";
+
 const ImportanceLevelSummary = ({
   normalTasks,
   lowTasks,

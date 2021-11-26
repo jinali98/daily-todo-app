@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { Link, NavLink } from "react-router-dom";
 import { createStructuredSelector } from "reselect";
+
 import {
   selectAllTasks,
   selectCompletedTasks,

@@ -1,6 +1,7 @@
-import { Typography } from "@material-ui/core";
 import React from "react";
+import { Typography } from "@material-ui/core";
 import { withRouter } from "react-router-dom";
+
 import { ReactComponent as HomePageImage } from "../../assets/images/wfh_1.svg";
 import { ReactComponent as AllTaskPageImage } from "../../assets/images/wfh_9.svg";
 import { ReactComponent as CompletedTaskPageImage } from "../../assets/images/wfh_10.svg";
@@ -8,9 +9,11 @@ import { ReactComponent as PendingTaskPageImage } from "../../assets/images/wfh_
 import { ReactComponent as TodayTaskPageImage } from "../../assets/images/wfh_5.svg";
 import { ReactComponent as TomorrowTaskPageImage } from "../../assets/images/wfh_7.svg";
 import { ReactComponent as ThisMonthPageImage } from "../../assets/images/wfh_6.svg";
+
 import { AddTaskButton } from "../buttons/buttons.component";
 
 import "./landing-content-no-tasks.styles.scss";
+
 const LandingContentNoTasks = ({
   history,
   message,

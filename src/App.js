@@ -7,28 +7,31 @@ import CompletedTasks from "./pages/completedTaskPage/completed-tasks.component"
 import InProgress from "./pages/inProgressPage/in-progress.component";
 import Signin from "./pages/signinSignupPage/sign-in.component";
 import NewTask from "./pages/newTaskPage/new-task.component";
-import { setCurrentUser, signinStarted } from "./redux/user/user.actions";
 import TodayPage from "./pages/todayPage/today-page.component";
 import TomorowPage from "./pages/tomorowPage/tomorow-page.component";
-import { createStructuredSelector } from "reselect";
-import { selectCurrentUser } from "./redux/user/user.selector";
-import "./App.css";
 import ThisMonthPage from "./pages/thisMonthPage/this-month-page.component";
 import HomePage from "./pages/homePage/home-page.component";
-import HeaderNavigation from "./components/header-navigation/header-navigation";
+
+import { setCurrentUser, signinStarted } from "./redux/user/user.actions";
+import { createStructuredSelector } from "reselect";
+import { selectCurrentUser } from "./redux/user/user.selector";
 import { setTaskStart } from "./redux/tasks/tasks.actions";
 import {
   selectErrorState,
   selectLoadingState,
 } from "./redux/tasks/tasks.selectors";
+
+import HeaderNavigation from "./components/header-navigation/header-navigation";
 import SnackBarAlert from "./components/snack-bar/snack-bar.component";
 import { ThemeProvider, createTheme } from "@material-ui/core/styles";
+import "./App.css";
 
 const theme = createTheme({
   typography: {
     fontFamily: ["Poppins", "sans-serif"].join(","),
   },
 });
+
 const App = ({ loading, error, currentUser, setTasksStart }) => {
   useEffect(() => {
     if (currentUser) {

@@ -2,12 +2,10 @@ import React from "react";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 import { v4 } from "uuid";
+
 import useTextFieldValidate from "../../effects/useTextFieldValidate";
 import { updateTaskStart } from "../../redux/tasks/tasks.actions";
-import {
-  selectAllTasks,
-  selectLoadingState,
-} from "../../redux/tasks/tasks.selectors";
+import { selectAllTasks } from "../../redux/tasks/tasks.selectors";
 import { selectCurrentUser } from "../../redux/user/user.selector";
 import { formatDate } from "../../utils/formatDate";
 import { AddTaskButton } from "../buttons/buttons.component";
@@ -18,6 +16,7 @@ import {
   TaskPriorTypesField,
   TitleField,
 } from "../custom-input/custom-input.component";
+
 import "./task-form.styles.scss";
 
 const TaskForm = ({ currentUser, updateTaskStart, tasks }) => {

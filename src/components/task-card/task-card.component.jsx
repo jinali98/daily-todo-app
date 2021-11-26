@@ -1,6 +1,8 @@
-import { CardActions, CardContent, Chip, Typography } from "@material-ui/core";
 import React from "react";
+import { CardActions, CardContent, Chip, Typography } from "@material-ui/core";
 import { connect } from "react-redux";
+import { createStructuredSelector } from "reselect";
+
 import {
   updateStatusStart,
   removeTaskStart,
@@ -9,7 +11,6 @@ import CustomCard from "../custom-card/custom-card.component";
 import { DeleteButton, UpdateStatusButton } from "../buttons/buttons.component";
 import { taskPriorLevels } from "../../constants/taskPriorityLevels";
 import { taskTypes } from "../../constants/taskTypes";
-import { createStructuredSelector } from "reselect";
 import { selectAllTasks } from "../../redux/tasks/tasks.selectors";
 import { selectCurrentUser } from "../../redux/user/user.selector";
 import { useStyles } from "./task-card.styles";

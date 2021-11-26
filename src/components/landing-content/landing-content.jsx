@@ -1,7 +1,9 @@
-import { Typography } from "@material-ui/core";
 import React from "react";
+import { Typography } from "@material-ui/core";
+
 import SummaryCardContainer from "../summaryCard-container/summaryCard-container";
 import "./landing-content.styles.scss";
+
 const LandingContent = () => {
   return (
     <div className="landing-content-container">
