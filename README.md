@@ -3,7 +3,7 @@
 
 Daily is a task management app with statistical analysis of various types of tasks
 
-
+<img src="https://user-images.githubusercontent.com/68109485/143693638-5de11992-6592-4b83-a596-ab9a6eb13863.jpg" alt="daily-app" border="0" width="50%">
 
 ## Stack
 
