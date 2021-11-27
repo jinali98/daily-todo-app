@@ -2,10 +2,11 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-.taskcount-color {
-  width: 40px;
-  padding: 8px;
-  text-align: center;
-  border-radius: 50%;
+
+  .taskcount-color {
+    width: 40px;
+    padding: 8px;
+    text-align: center;
+    border-radius: 50%;
+  }
 }

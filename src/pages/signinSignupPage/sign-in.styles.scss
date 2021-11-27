@@ -6,13 +6,14 @@
   background-color: #eebefa;
   border-radius: 12px;
   padding: 3rem 0;
+
+  &_image-container {
+    width: 300px;
+    margin: auto;
+    margin-bottom: 1rem;
+  }
 }
 
-.sign-in-page_image-container {
-  width: 300px;
-  margin: auto;
-  margin-bottom: 1rem;
-}
 @media (max-width: 992px) {
   .sign-in-page {
     width: max-content;

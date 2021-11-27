@@ -5,12 +5,13 @@
   background-color: #ffd8a8;
   border-radius: 12px;
   padding: 1rem 0;
+
+  .landing-content-empty-wrapper_image {
+    width: 400px;
+    margin: auto;
+  }
 }
 
-.landing-content-empty-wrapper_image {
-  width: 400px;
-  margin: auto;
-}
 @media (max-width: 992px) {
   .landing-content-empty-wrapper {
     width: 80%;
@@ -19,11 +20,23 @@
 
 @media (max-width: 768px) {
   .landing-content-empty-wrapper {
-    width: 100%;
-  }
+    width: 70%;
+    margin: 1rem 0;
+    padding: 20px;
 
-  .landing-content-empty-wrapper_image {
-    width: 250px;
-    height: max-content;
+    .landing-content-empty-wrapper_image {
+      width: 250px;
+      height: max-content;
+    }
+  }
+}
+
+@media (max-width: 360px) {
+  .landing-content-empty-wrapper {
+    width: 80%;
+
+    .landing-content-empty-wrapper_image {
+      width: 220px;
+    }
   }
 }
