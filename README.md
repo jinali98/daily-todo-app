@@ -56,8 +56,8 @@ Daily is a task management app with statistical analysis of various types of tas
  
  
 
-<img src="https://user-images.githubusercontent.com/68109485/143693638-5de11992-6592-4b83-a596-ab9a6eb13863.jpg" alt="daily-app" border="0" width="40%" style="float: left; margin-right: 10px;">
-<img src="https://user-images.githubusercontent.com/68109485/143693625-bbcefa20-d1a9-459b-9359-64eea972f2ab.jpg" alt="daily-app" border="0" width="40%" style="float: right; margin-right: 10px;">
+<img src="https://user-images.githubusercontent.com/68109485/143693638-5de11992-6592-4b83-a596-ab9a6eb13863.jpg" alt="daily-app" border="0" width="40%" style="float: left; margin-right: 10px; display: inline-block;">
+<img src="https://user-images.githubusercontent.com/68109485/143693625-bbcefa20-d1a9-459b-9359-64eea972f2ab.jpg" alt="daily-app" border="0" width="40%" style="float: right; margin-right: 10px; display: inline-block;">
 <img src="https://user-images.githubusercontent.com/68109485/143693652-7dfb9937-6e4a-44b8-a2c8-610b9b660bcd.jpg" alt="daily-app" border="0" width="50%">
 <img src="https://user-images.githubusercontent.com/68109485/143693665-6a58b0de-ce54-4ea2-b147-6237c3687c2d.jpg" alt="daily-app" border="0" width="50%">
 <img src="https://user-images.githubusercontent.com/68109485/143693677-59f1519f-2af3-4973-90b6-9722966f5d63.jpg" alt="daily-app" border="0" width="50%">
